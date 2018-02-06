@@ -9,9 +9,9 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://zhuzhuyule.com/baidusitemap.xml
 Sitemap: https://zhuzhuyule.com/baidusitemap.xml
-Sitemap: http://zhuzhuyule.ecoding.me/sitemap.xml
+Sitemap: https://zhuzhuyule.com/baidusitemap.xml
 Sitemap: https://zhuzhuyule.ecoding.me/sitemap.xml
-Sitemap: http://zhuzhuyule.github.io/baidusitemap.xml
+Sitemap: https://zhuzhuyule.ecoding.me/sitemap.xml
+Sitemap: https://zhuzhuyule.github.io/baidusitemap.xml
 Sitemap: https://zhuzhuyule.github.io/baidusitemap.xml
