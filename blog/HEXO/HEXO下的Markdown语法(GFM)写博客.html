@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="h2u9OEk_v8FdEU5RuBIX3A5RJAqD8pqnLBXZiyXb1qI" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/pig.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pig.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pig.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/pig.png?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Markdown,语法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Markdown 是一种轻量级的「标记语言」，优点在于  专注你的文字内容而不是排版样式。 轻松的导出 HTML、PDF 和本身的 .md 文件。 纯文本内容，兼容所有的文本编辑器与字处理软件。 可读，直观。适合所有人的写作语言。">
+<meta name="keywords" content="Markdown,语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HEXO下的Markdown语法(GFM)写博客">
+<meta property="og:url" content="https://zhuzhuyule.com/blog/HEXO/HEXO下的Markdown语法(GFM)写博客.html">
+<meta property="og:site_name" content="猪猪娱乐">
+<meta property="og:description" content="Markdown 是一种轻量级的「标记语言」，优点在于  专注你的文字内容而不是排版样式。 轻松的导出 HTML、PDF 和本身的 .md 文件。 纯文本内容，兼容所有的文本编辑器与字处理软件。 可读，直观。适合所有人的写作语言。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://zhuzhuyule.com/images/avatar.png">
+<meta property="og:image" content="https://zhuzhuyule.com/images/avatar.png">
+<meta property="og:updated_time" content="2017-11-30T02:07:57.287Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HEXO下的Markdown语法(GFM)写博客">
+<meta name="twitter:description" content="Markdown 是一种轻量级的「标记语言」，优点在于  专注你的文字内容而不是排版样式。 轻松的导出 HTML、PDF 和本身的 .md 文件。 纯文本内容，兼容所有的文本编辑器与字处理软件。 可读，直观。适合所有人的写作语言。">
+<meta name="twitter:image" content="https://zhuzhuyule.com/images/avatar.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhuzhuyule.com/blog/HEXO/HEXO下的Markdown语法(GFM)写博客.html"/>
+
+
+
+
+
+  <title>HEXO下的Markdown语法(GFM)写博客 | 猪猪娱乐</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-90330925-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a303e62cc4f2be88857fe20aac0f9660";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">猪猪娱乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">做自己爱做的事，爱自己在做的事！</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script>
+    (function(){
+
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+    
+  
+
+  <article class="post post-type-normal post-sticky" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhuzhuyule.com/blog/HEXO/HEXO下的Markdown语法(GFM)写博客.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhuzhuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="猪猪娱乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">HEXO下的Markdown语法(GFM)写博客</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-10T18:54:23+08:00">
+                2017-01-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-30T10:07:57+08:00">
+                2017-11-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  >
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/blog/HEXO/HEXO下的Markdown语法(GFM)写博客.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="blog/HEXO/HEXO下的Markdown语法(GFM)写博客.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/blog/HEXO/HEXO下的Markdown语法(GFM)写博客.html" class="leancloud_visitors" data-flag-title="HEXO下的Markdown语法(GFM)写博客">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.appinn.com/markdown/" target="_blank" rel="external"><strong><em>Markdown</em></strong></a> 是一种轻量级的<strong>「标记语言」</strong>，优点在于</p>
+<ul>
+<li><strong>专注你的文字内容而不是排版样式。</strong></li>
+<li><strong>轻松的导出 HTML、PDF 和本身的 .md 文件。</strong></li>
+<li><strong>纯文本内容，兼容所有的文本编辑器与字处理软件。</strong></li>
+<li><strong>可读，直观。适合所有人的写作语言。</strong></li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p>并且具有以下特点：</p>
+</blockquote>
+<ul>
+<li><strong>自动生成目录</strong></li>
+<li><strong>代码块高亮</strong></li>
+<li><strong>引用展示</strong></li>
+<li><strong>表格插入</strong></li>
+<li><strong>图片插入</strong></li>
+<li><strong>强调显示</strong></li>
+<li><strong>列表显示</strong></li>
+<li><strong>自动URL链接</strong></li>
+</ul>
+<blockquote>
+<p>Hexo下使用的<strong>MarkDown</strong>为Github的<a href="https://help.github.com/categories/writing-on-github/" target="_blank" rel="external">GFM</a>，风格很漂亮，简洁美观大方。但是<em>GFM</em> 的<strong>MarkDown</strong>语法和<em>标准</em> 的<strong>MarkDown</strong>稍有不同，使用过程中需要注意一些。</p>
+</blockquote>
+<h2 id="语法简明概述"><a href="#语法简明概述" class="headerlink" title="语法简明概述"></a>语法简明概述</h2><ol>
+<li><strong>分段</strong> <code>两个回车</code></li>
+<li><strong>换行</strong> <code>两个空格</code> + <code>回车</code></li>
+<li><strong>标题</strong> <code>#</code> ~ <code>######</code>，<code>#</code><strong>号的个数表示几级标题，即表示一级标题到六级标题</strong></li>
+<li><strong>强调</strong> <code>**文字**</code> ， <code>__文字__</code> ， <code>_文字_</code> ， <code>*文字*</code> ， <code>~~文字~~</code></li>
+<li><strong>引用</strong> <code>&gt;</code> <strong>注意后面紧跟个空格</strong></li>
+<li><strong>表格</strong> <code>-</code> <strong>和</strong> <code>|</code> <strong>分割行和列 ，</strong> <code>:</code> <strong>控制对其方式</strong></li>
+<li><strong>代码块</strong> <code>四个空格</code> <strong>开头或， 使用</strong><code>```</code> <strong>代码内容</strong> <code>```</code></li>
+<li><strong>链接</strong> <code>[文字](链接地址)</code></li>
+<li><strong>图片</strong> <code>![图片说明](图片地址)</code> ，<strong>地址可以是本地路劲，也可以是网络地址</strong></li>
+<li><strong>列表</strong> <code>*</code> ， <code>+</code> ， <code>-</code> ， <code>1.</code> ，<strong>选其中之一，注意后面紧跟个空格</strong></li>
+</ol>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line"><span class="section"># 欢迎使用Markdown编辑器写博客   //一级标题 对应 &lt;h1&gt; &lt;/h1&gt;</span></div><div class="line"><span class="section">## 标题输入                     //二级标题 对应 &lt;h2&gt; &lt;/h2&gt;</span></div><div class="line"><span class="section">### 三级标题                    //三级标题 对应 &lt;h3&gt; &lt;/h3&gt;</span></div><div class="line"><span class="section">#### 四级标题                   //四级标题 对应 &lt;h4&gt; &lt;/h4&gt;</span></div><div class="line"><span class="section">##### 五级标题                  //五级标题 对应 &lt;h5&gt; &lt;/h5&gt;</span></div><div class="line"><span class="section">###### 六级标题                 //六级标题 对应 &lt;h6&gt; &lt;/h6&gt;</span></div><div class="line"><span class="section">####### 七级标题                //抱歉，木有了（但是他会影响生成的目录，目录行多出一行空行）</span></div><div class="line"></div><div class="line">二级标题                        //二级标题 对应 <span class="xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span></span> <span class="xml"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></div><div class="line">----                           //这里添加四个'－' （减号）</div></pre></div></div></figure>
+<blockquote>
+<p>这里不做展示了，影响目录的展示。 </p>
+</blockquote>
+<h2 id="内容强调"><a href="#内容强调" class="headerlink" title="内容强调"></a>内容强调</h2><h3 id="加粗、斜体"><a href="#加粗、斜体" class="headerlink" title="加粗、斜体"></a>加粗、斜体</h3><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">字体 <span class="strong">**加粗**</span> 显示</div><div class="line">字体 <span class="emphasis">*斜体*</span> 显示</div><div class="line">字体 <span class="strong">***加粗并斜体**</span>* 显示</div></pre></div></div></figure>
+<blockquote>
+<p>字体 <strong>加粗</strong> 显示<br>字体 <em>斜体</em> 显示<br>字体 <strong><em>加粗并斜体</em></strong> 显示</p>
+</blockquote>
+<figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line">字体 <span class="strong">__加粗__</span> 显示</div><div class="line">字体 <span class="emphasis">_斜体_</span> 显示</div><div class="line">字体 <span class="strong">___加粗并斜体__</span>_ 显示</div><div class="line">组合 <span class="strong">*__加粗并斜体__</span>* 显示</div></pre></div></div></figure>
+<blockquote>
+<p>字体 <strong>加粗</strong> 显示<br>字体 <em>斜体</em> 显示<br>字体 <strong><em>加粗并斜体</em></strong> 显示<br>组合 <em><strong>加粗并斜体</strong></em> 显示</p>
+</blockquote>
+<h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line">这样来 ~~删除一段文本~~</div></pre></div></div></figure>
+<blockquote>
+<p>这样来 <del>删除一段文本</del></p>
+</blockquote>
+<h3 id="高亮"><a href="#高亮" class="headerlink" title="高亮"></a>高亮</h3><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">使用<span class="xml"><span class="tag">&lt;<span class="name">code</span>&gt;</span></span>\<span class="code">`&lt;/code&gt;来强调字符   //想打出  `</span> (反引号)需要转义的，加<span class="xml"><span class="tag">&lt;<span class="name">code</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">code</span>&gt;</span></span>标签强调</div><div class="line">比如<span class="code">`突出背景色`</span>来显示强调效果</div></pre></div></div></figure>
+<blockquote>
+<p>使用<code>`</code>来强调字符<br>比如<code>突出背景色</code>来显示强调效果</p>
+</blockquote>
+<h3 id="引用显示"><a href="#引用显示" class="headerlink" title="引用显示"></a>引用显示</h3><p>引用过程中任然支持<code>Markdown</code>语法！</p>
+<h4 id="标准使用"><a href="#标准使用" class="headerlink" title="标准使用"></a>标准使用</h4><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></div><div class="code"><pre><div class="line"><span class="quote">&gt; 每行开始都使用 '&gt;'；</span></div><div class="line"><span class="quote">&gt; 引用**开始**；</span></div><div class="line"><span class="quote">&gt; 引用**换行**；</span></div><div class="line"><span class="quote">&gt; 引用**结束**。</span></div><div class="line"></div><div class="line"><span class="quote">&gt; 还在引用中！</span></div><div class="line"></div><div class="line">两个回车结束引用！</div></pre></div></div></figure>
+<blockquote>
+<p>每行开始都使用 ‘&gt;’；<br>引用<strong>开始</strong>；<br>引用<strong>换行</strong>；<br>引用<strong>结束</strong>。</p>
+<p>还在引用中！</p>
+</blockquote>
+<p>　<span class="label label-info"> 两个回车</span>结束引用！</p>
+<h4 id="省略使用"><a href="#省略使用" class="headerlink" title="省略使用"></a>省略使用</h4><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line"><span class="quote">&gt; 仅第一行加应用；</span></div><div class="line">引用<span class="strong">**开始**</span>；</div><div class="line">引用<span class="strong">**换行**</span>；</div><div class="line">引用<span class="strong">**结束**</span>；</div><div class="line"></div><div class="line">两个回车结束引用,不在引用范围内了！</div></pre></div></div></figure>
+<blockquote>
+<p>仅第一行加应用；<br>引用<strong>开始</strong>；<br>引用<strong>换行</strong>；<br>引用<strong>结束</strong>；</p>
+</blockquote>
+<p>　<span class="label label-info"> 两个回车</span> 结束引用,不在引用范围内了！</p>
+<h4 id="嵌套使用"><a href="#嵌套使用" class="headerlink" title="嵌套使用"></a>嵌套使用</h4><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></div><div class="code"><pre><div class="line"><span class="quote">&gt; 动物</span></div><div class="line">&gt;&gt; 水生动物</div><div class="line">&gt;&gt; 陆生动物</div><div class="line">&gt;&gt;&gt; 猴子</div><div class="line">&gt;&gt;&gt; 人</div><div class="line">&gt;&gt;&gt;&gt; 程序猿</div><div class="line">&gt;&gt;&gt;&gt; 攻城狮</div><div class="line marked">&gt;&gt;产品狗 //这里需要注意，没有空行间隔，忽略降级引用标记</div><div class="line marked">射鸡虱   //这里需要注意，没有空行间隔，忽略降级引用标记</div><div class="line"></div><div class="line">&gt;&gt; 两栖类动物</div><div class="line">&gt;&gt;&gt; 大鳄鱼</div><div class="line">唐老鸭</div><div class="line"></div><div class="line">两个回车结束引用,不在引用范围内了！</div></pre></div></div></figure>
+<blockquote>
+<p>动物</p>
+<blockquote>
+<p>水生动物<br>陆生动物</p>
+<blockquote>
+<p>猴子<br>人</p>
+<blockquote>
+<p>程序猿<br>攻城狮<br>产品狗　<code>这里需要注意，没有空行间隔，忽略降级引用标记</code><br>射鸡虱　<code>这里需要注意，没有空行间隔，忽略降级引用标记</code> </p>
+</blockquote>
+</blockquote>
+<p>两栖类动物</p>
+<blockquote>
+<p>大鳄鱼<br>唐老鸭</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>　<span class="label label-info"> 两个回车</span> 结束引用,不在引用范围内了！</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><blockquote>
+<p>表格语法：<br><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line">列1   | 列2 | 列3 </div><div class="line">----- | --- | ---- </div><div class="line">第1行 | 12  | 13  </div><div class="line">第2行 | 22  | 23  </div><div class="line">第3行 | 32  | 33</div></pre></div></div></figure></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>列1</th>
+<th>列2</th>
+<th>列3 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第1行</td>
+<td>12</td>
+<td>13  </td>
+</tr>
+<tr>
+<td>第2行</td>
+<td>22</td>
+<td>23  </td>
+</tr>
+<tr>
+<td>第3行</td>
+<td>32</td>
+<td>33 </td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>可以使用<code>冒号</code>来定义对齐方式：<br><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line">| 左对齐    |  右对齐 | 居中 |</div><div class="line">| :-------- | -------:| :--: |</div><div class="line">| Computer  | 5000 元 |  1台 |</div><div class="line">| Phone     | 1999 元 |  1部 |</div></pre></div></div></figure></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">左对齐</th>
+<th style="text-align:right">右对齐</th>
+<th style="text-align:center">居中</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Computer</td>
+<td style="text-align:right">5000 元</td>
+<td style="text-align:center">1台</td>
+</tr>
+<tr>
+<td style="text-align:left">Phone</td>
+<td style="text-align:right">1999 元</td>
+<td style="text-align:center">1部</td>
+</tr>
+</tbody>
+</table>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>代码块语法遵循标准 <code>markdown</code> 代码，使用 <code>```</code> <span class="label label-info"> 开始</span>， <code>```</code> <span class="label label-primary"> 结束</span>，例如：<br><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="code">```Python</span></div><div class="line"><span class="code">#!/usr/bin/env python</span></div><div class="line"><span class="code"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="code">print 'Hello World!</span></div><div class="line"><span class="code">```</span></div></pre></div></div></figure></p>
+<blockquote>
+<p>以上代码框及代码输入内容<br><figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">print</span> <span class="string">'Hello World!'</span></div></pre></div></div></figure></p>
+</blockquote>
+<h3 id="特别提示"><a href="#特别提示" class="headerlink" title="特别提示"></a>特别提示</h3><blockquote>
+<p>如何在<code>代码块</code>中打出 <code>```</code><br><figure class="highlight plain"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line">````</div><div class="line">```</div><div class="line">复制到你的`markdown`中看看去吧！</div><div class="line">```</div><div class="line">````</div></pre></div></div></figure></p>
+<p>实际上是使用 <strong>4</strong>个<code>`</code> 包含 <strong>3</strong>个<code>`</code> 就可以了，想表示更多，最外层<code>+1</code>就好了。<br><code>````</code><br><code>```</code><br><code>```</code><br><code>````</code> </p>
+</blockquote>
+<h2 id="链接插入"><a href="#链接插入" class="headerlink" title="链接插入"></a>链接插入</h2><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">[<span class="string">首页</span>](<span class="link">https://zhuzhuyule.com</span>)</div><div class="line">[<span class="string">我的信息</span>](<span class="link">/about/</span>)</div><div class="line">[<span class="string">纪念册</span>](<span class="link">https://love.zhuzhuyule.com/</span>)</div></pre></div></div></figure>
+<blockquote>
+<ul>
+<li><a href="https://zhuzhuyule.com">首页</a></li>
+<li><a href="https://zhuzhuyule.com/about/">我的信息</a></li>
+<li><a href="https://love.zhuzhuyule.com/" target="_blank" rel="external">纪念册</a></li>
+</ul>
+</blockquote>
+<h2 id="图片插入"><a href="#图片插入" class="headerlink" title="图片插入"></a>图片插入</h2><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">![<span class="string">我的头像</span>](<span class="link">https://zhuzhuyule.com/images/avatar.png</span>)</div><div class="line">![<span class="string">我的头像</span>](<span class="link">/images/avatar.png</span>)</div></pre></div></div></figure>
+<blockquote>
+<p><img src="https://zhuzhuyule.com/images/avatar.png" alt="我的头像"><br><img src="/images/avatar.png" alt="我的头像"></p>
+</blockquote>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="bullet">* </span><span class="code">`*`</span>列表展示</div><div class="line"><span class="bullet">* </span><span class="code">`*`</span>列表展示</div><div class="line"> <span class="bullet">* `*</span>`列表展示</div><div class="line"><span class="bullet">+ </span><span class="code">`+`</span>列表展示</div><div class="line"><span class="bullet">+ </span><span class="code">`+`</span>列表展示</div><div class="line"> + <span class="code">`+`</span>列表展示</div><div class="line"><span class="bullet">- </span><span class="code">`-`</span>列表展示</div><div class="line"><span class="bullet">- </span><span class="code">`-`</span>列表展示</div><div class="line"> - <span class="code">`-`</span>列表展示</div></pre></div></div></figure>
+<blockquote>
+<ul>
+<li><code>*</code>列表展示</li>
+<li><code>*</code>列表展示<ul>
+<li><code>*</code>列表展示</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>+</code>列表展示</li>
+<li><code>+</code>列表展示<ul>
+<li><code>+</code>列表展示</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>-</code>列表展示</li>
+<li><code>-</code>列表展示<ul>
+<li><code>-</code>列表展示</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line">这种方式不用手动设置序号，自动生成列表序列</div><div class="line"><span class="bullet">1. </span><span class="strong">**我是一级序列**</span> </div><div class="line"><span class="bullet">1. </span><span class="strong">**我是一级序列**</span> </div><div class="line"><span class="bullet">1. </span><span class="strong">**我是一级序列**</span> </div><div class="line"> 1. <span class="emphasis">*我是二级序列*</span> </div><div class="line"> 1. <span class="emphasis">*我是二级序列*</span> </div><div class="line"> 1. <span class="emphasis">*我是二级序列*</span> </div><div class="line"><span class="bullet">1. </span><span class="strong">**我是一级序列**</span> </div><div class="line"><span class="bullet">1. </span><span class="strong">**我是一级序列**</span> </div><div class="line"> 1. <span class="emphasis">*我是二级序列*</span> </div><div class="line"> 1. <span class="emphasis">*我是二级序列*</span> </div><div class="line">  1. 还是二级序列，没有三级序列</div></pre></div></div></figure>
+<blockquote>
+<p>这种方式不用手动设置序号，自动生成列表序列</p>
+<ol>
+<li><strong>我是一级序列</strong> </li>
+<li><strong>我是一级序列</strong> </li>
+<li><strong>我是一级序列</strong> <ol>
+<li><em>我是二级序列</em> <code>多于一级序列一个空格</code></li>
+<li><em>我是二级序列</em> <code>多于一级序列一个空格</code></li>
+<li><em>我是二级序列</em> <code>多于一级序列一个空格</code></li>
+</ol>
+</li>
+<li><strong>我是一级序列</strong> </li>
+<li><strong>我是一级序列</strong> <ol>
+<li><em>我是二级序列</em> <code>多于一级序列一个空格</code></li>
+<li><em>我是二级序列</em> <code>多于一级序列一个空格</code></li>
+<li>还是二级序列，没有三级序列 <code>虽然多于二级序列一个空格，但是任然是二级序列</code></li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h2 id="链接自动检测"><a href="#链接自动检测" class="headerlink" title="链接自动检测"></a>链接自动检测</h2><figure class="highlight markdown"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">首页:https://zhuzhuyule.com</div><div class="line">我的信息:https://zhuzhuyule.com/about/</div><div class="line">纪念册:https://love.zhuzhuyule.com/</div></pre></div></div></figure>
+<blockquote>
+<ul>
+<li>首页:<a href="https://zhuzhuyule.com">https://zhuzhuyule.com</a></li>
+<li>我的信息:<a href="https://zhuzhuyule.com/about/">https://zhuzhuyule.com/about/</a></li>
+<li>纪念册:<a href="https://love.zhuzhuyule.com/" target="_blank" rel="external">https://love.zhuzhuyule.com/</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    zhuzhuxia
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://zhuzhuyule.com/blog/HEXO/HEXO下的Markdown语法(GFM)写博客.html" title="HEXO下的Markdown语法(GFM)写博客">https://zhuzhuyule.com/blog/HEXO/HEXO下的Markdown语法(GFM)写博客.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>温馨提示： </strong>
+    <span class="tip">由于原创文章，会经常更新知识点以及修正一些错误，因此转载请保留原出处， 方便溯源，避免陈旧错误知识的误导，同时有更好的阅读体验。</span>
+  </li>
+</ul>
+
+      </div>
+    
+
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得我的文章对您有用，请随意打赏。您的支持将是我继续创作的动力！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechat-reward.png" alt="zhuzhuxia 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay-reward.png" alt="zhuzhuxia 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+          
+            <a href="/tags/语法/" rel="tag"># 语法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/Skill/Linux的scp命令.html" rel="prev" title="Linux的scp命令">
+                Linux的scp命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+    
+    
+      <div id="cyQing" role="cylabs" data-use="qing"></div>
+      <!-- <div id="cyEmoji" role="cylabs" data-use="emoji"></div> -->
+    
+  
+
+
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+            <canvas id='sidebar-author'></canvas>
+            <a href="/"  class="site-author-image" rel="start" style="border: none;" title="zhuzhuxia">
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="zhuzhuxia" />
+	    </a>
+            
+              <p class="site-author-name" itemprop="name">zhuzhuxia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zhuzhuyule" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/zhuzhuyule" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/zhuzhuyule" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          <div id="sidebarClock" class="customFlipClock" style="height: 46px;width: 100%; ">TwentyFourHourClock</div>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法简明概述"><span class="nav-number">1.</span> <span class="nav-text">语法简明概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">2.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容强调"><span class="nav-number">3.</span> <span class="nav-text">内容强调</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加粗、斜体"><span class="nav-number">3.1.</span> <span class="nav-text">加粗、斜体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除线"><span class="nav-number">3.2.</span> <span class="nav-text">删除线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高亮"><span class="nav-number">3.3.</span> <span class="nav-text">高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用显示"><span class="nav-number">3.4.</span> <span class="nav-text">引用显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准使用"><span class="nav-number">3.4.1.</span> <span class="nav-text">标准使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#省略使用"><span class="nav-number">3.4.2.</span> <span class="nav-text">省略使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套使用"><span class="nav-number">3.4.3.</span> <span class="nav-text">嵌套使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">4.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码块"><span class="nav-number">5.</span> <span class="nav-text">代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特别提示"><span class="nav-number">5.1.</span> <span class="nav-text">特别提示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接插入"><span class="nav-number">6.</span> <span class="nav-text">链接插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片插入"><span class="nav-number">7.</span> <span class="nav-text">图片插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">8.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无序列表"><span class="nav-number">8.1.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序列表"><span class="nav-number">8.2.</span> <span class="nav-text">有序列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接自动检测"><span class="nav-number">9.</span> <span class="nav-text">链接自动检测</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhuzhuxia</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user" aria-hidden="true"></i> 您是第
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      位访客
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye" aria-hidden="true"></i> 访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/function.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>	
+<script type="text/javascript" src="/lib/flipclock/flipclock.min.js"></script>	
+<script type="text/javascript" src="/js/src/customeFlipClock.js"></script>	
+<script type="text/javascript" src="/js/src/codescrollbar.js"></script>	
+<script type="text/javascript" src="/lib/tag3dCloud/tag3dCloud.min.js"> </script>
+<script type="text/javascript" src="/lib/wobblewindow/wobblewindow.js"> </script>
+<script type="text/javascript" src="/js/src/custom.js"></script>	
+<script >
+	$(document).ready(
+	function()
+		{			
+			
+		}
+	);	
+</script>
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cysUtw2bK';
+      var conf = '963ddc22890a37056f86ae4def092f78';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          //$('.popup').detach().appendTo('.header-inner');
+          $('.popup').detach().appendTo('body');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6gkeWX7uyM69Suac2kuNsxLI-gzGzoHsz", "DGI3SXz1bKTgG1plxQKqmKOa");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

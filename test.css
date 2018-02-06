@@ -1,0 +1,58 @@
+
+.a{
+    height: 300px;
+    width: 10px;
+}
+
+#container-wrapper{
+    width: 100px;
+    height: 100px;
+    background: gray;
+    overflow: auto;
+}
+
+#container-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(10,111,0,0);
+    -webkit-animation: 1s;
+}
+
+
+#container-wrapper.hoverScroll::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+}
+
+:root{
+    --scrollWidth: 10px;
+}
+
+#container-wrapper::-webkit-scrollbar {
+    width: var(--scrollWidth);
+    height: var(--scrollWidth);
+    animate: 2s;
+}
+#container-wrapper::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+#container-wrapper::-webkit-scrollbar-button:start:increment,
+#container-wrapper::-webkit-scrollbar-button:end:decrement {
+    display: none;
+}
+#container-wrapper::-webkit-scrollbar-corner {
+    display: block;
+}
+#container-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+}
+#container-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.5);
+}
+#container-wrapper::-webkit-scrollbar-track,
+#container-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+}
+#container-wrapper::-webkit-scrollbar-track:hover {
+    background-color: rgba(0,0,0,0.15);
+}

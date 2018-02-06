@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="h2u9OEk_v8FdEU5RuBIX3A5RJAqD8pqnLBXZiyXb1qI" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/pig.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pig.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pig.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/pig.png?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo优化系列," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文主要记录一下，修改Hexo下语法高亮的各种用法，修改后的语法可以快速设置多种样式，主要功能如下：  设置语法语言 设置标题 是否显示行号 设置起始行号 选定行号标记 设置代码添加删除标记  （2017年11月26日新增） 设置跳转超级链接">
+<meta name="keywords" content="Hexo优化系列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HEXO下的语法高亮拓展修改">
+<meta property="og:url" content="https://zhuzhuyule.com/blog/HEXO/HEXO下的语法高亮拓展修改.html">
+<meta property="og:site_name" content="猪猪娱乐">
+<meta property="og:description" content="本文主要记录一下，修改Hexo下语法高亮的各种用法，修改后的语法可以快速设置多种样式，主要功能如下：  设置语法语言 设置标题 是否显示行号 设置起始行号 选定行号标记 设置代码添加删除标记  （2017年11月26日新增） 设置跳转超级链接">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-28T07:28:09.350Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HEXO下的语法高亮拓展修改">
+<meta name="twitter:description" content="本文主要记录一下，修改Hexo下语法高亮的各种用法，修改后的语法可以快速设置多种样式，主要功能如下：  设置语法语言 设置标题 是否显示行号 设置起始行号 选定行号标记 设置代码添加删除标记  （2017年11月26日新增） 设置跳转超级链接">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhuzhuyule.com/blog/HEXO/HEXO下的语法高亮拓展修改.html"/>
+
+
+
+
+
+  <title>HEXO下的语法高亮拓展修改 | 猪猪娱乐</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-90330925-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a303e62cc4f2be88857fe20aac0f9660";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">猪猪娱乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">做自己爱做的事，爱自己在做的事！</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script>
+    (function(){
+
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhuzhuyule.com/blog/HEXO/HEXO下的语法高亮拓展修改.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhuzhuxia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="猪猪娱乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">HEXO下的语法高亮拓展修改</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T14:33:21+08:00">
+                2017-09-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T15:28:09+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  >
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/blog/HEXO/HEXO下的语法高亮拓展修改.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="blog/HEXO/HEXO下的语法高亮拓展修改.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/blog/HEXO/HEXO下的语法高亮拓展修改.html" class="leancloud_visitors" data-flag-title="HEXO下的语法高亮拓展修改">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要记录一下，修改Hexo下语法高亮的各种用法，修改后的语法可以快速设置多种样式，主要功能如下：</p>
+<ul>
+<li><a href="#设置语法语言">设置语法语言</a></li>
+<li><a href="#设置标题">设置标题</a></li>
+<li><a href="#是否显示行号">是否显示行号</a></li>
+<li><a href="#设置起始行号">设置起始行号</a></li>
+<li><a href="#选定行号标记">选定行号标记</a></li>
+<li><a href="#设置代码添加删除标记">设置代码添加删除标记</a>  （2017年11月26日新增）</li>
+<li><a href="#设置跳转超级链接">设置跳转超级链接</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="格式总览"><a href="#格式总览" class="headerlink" title="格式总览"></a>格式总览</h2><p>主要功能如上，都是自带功能，更重要的是只是想在<code>```</code> <code>```</code> 后直接实现设置，不想使用<code>{ % ... % }</code>去实现这些功能。</p>
+<ul>
+<li><p>格式</p>
+<figure class="highlight plain"><div class="figcode"><div class="code"><pre><div class="line">```[language] [:title] [lang:language] [line_number:(true|false)] [first_line:number] [mark:#,#-#] [diff:true|false] [url:http...]</div><div class="line">code snippet</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>自定义</p>
+<figure class="highlight custom"><div class="figcode"><div class="code"><pre><div class="line">```<input id="input" style="width:100%;background:rgba(0, 0, 0, 0); border: none;border-bottom: 1px dotted rgba(0,0,0,0.2);" onchange="changeEventHandler(value)" value=":编辑这里试一试"></div><div class="line">code snippet</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>效果</p>
+<figure id="codeArea" class="highlight">
+</figure>
+<script type="text/javascript">
+function getRegExcData(Content){
+    
+var rBacktick = /(\s*)(`{3,}|~{3,}) *(.*) *\n([\s\S]+?)\s*\2(\n|$)/g;
+
+var rUrl = /\s+url:(https?:\/\/\S+)(?:\s+(\S+))?\s*/i;
+var rLang = /(?:^|lang:)\s*(\w+)[\$\s]/i;
+var rLineNumber = /\s*line_number:(\w+)/i;
+var rDiff = /\s*diff:(\w+)/i;
+var rFirstLine = /\s*first_line:(\d+)/i;
+var rMark = /\s*mark:([0-9,\-]+)/i;
+var rDirCaption = /\s:((?:.(?!\s\b\w+:))*(?:\w+\.)*(?:.(?!\s\b\w+:))*(?:\w+\.)*[\\\/])?([^\\\/]+?)(?:(\.[^\.\s]+)\b)?\s*(?=\s\b\w+:|$)/i;
+
+ var args = ' ' + Content + ' ';
+        // 完全修改 为  tag模式
+        var caption = '';
+        var lang = '';
+        var line_number = 'true';
+        var rdiff = false;
+        var first_line = 1;
+        var mark = [];
+        var match;
+
+        if (rLineNumber.test(args)) {
+                    args = args.replace(rLineNumber, function() {
+                        line_number = arguments[1] === 'true';
+                        return ' ';
+                    });
+                }
+        
+                if (rFirstLine.test(args)) {
+                    args = args.replace(rFirstLine, function() {
+                        first_line = arguments[1];
+                        return ' ';
+                    });
+                }
+                
+                 if (rDiff.test(args)) {
+                            args = args.replace(rDiff, function() {
+                                rdiff = arguments[1] === 'true';
+                                return ' ';
+                            });
+                        }
+        
+                if (rMark.test(args)) {
+                    args = args.replace(rMark, function() {
+                        mark = arguments[1].split(',').reduce(function getMarkedLines(prev, cur) {
+                            var a, b, temp;
+                            if (/\-/.test(cur)) {
+                                a = Number(cur.substr(0, cur.indexOf('-')));
+                                b = Number(cur.substr(cur.indexOf('-') + 1));
+                                if (b < a) { // switch a & b
+                                    temp = a;
+                                    a = b;
+                                    b = temp;
+                                }
+        
+                                for (; a <= b; a++) {
+                                    prev.push(a);
+                                }
+        
+                                return prev;
+                            }
+        
+                            prev.push(Number(cur));
+                            return prev;
+                        }, []);
+        
+                        return ' ';
+                    });
+                }
+        
+                if (rDirCaption.test(args)) {
+                    args = args.replace(rDirCaption, function() {
+                        var path = arguments[1];
+                        var title = arguments[2];
+                        var suffix = arguments[3];
+        
+                        if (path) {
+                            caption = '<span class="fileDir">' + path + '</span>';
+                        }
+                        if (title) {
+                            caption += '<span class="caption">' + title + '</span>';
+                        }
+                        if (suffix) {
+                            caption += '<span class="suffix">' + suffix + '</span>';
+                            lang = suffix;
+                        }
+                        return ' ';
+                    });
+                }
+        
+                if (rLang.test(args)) {
+                    args = args.replace(rLang, function() {
+                        lang = arguments[1];
+                        return ' ';
+                    });
+                }
+        
+                if (rUrl.test((args))) {
+                    args = args.replace(rUrl, function() {
+                        var url = arguments[1];
+                        var option = arguments[2];
+                        if (typeof option === "undefined") {
+                            caption += '<a href="' + url + '" target="_blank">link</a>'
+                        } else if (option == "download" || option == "下载") {
+                            caption += '<a href="' + url + '" download=""><i class="fa fa-download" aria-hidden="true"></i> ' + option + '</a>'
+                        } else {
+                            caption += '<a href="' + url + '" target="_blank">' + option + '</a>'
+                        }
+                        return ' ';
+                    });
+        
+                    // match = args.match(rUrl);
+                    // match = args.match(rCaptionUrlTitle);
+                    // caption = matchCaption(match[1]) + '<a href="' + match[2] + match[3] + '">' + match[4] + '</a>';
+                }
+
+        return { lang: lang,
+                firstLine: first_line,
+                diff: rdiff,
+                caption: caption,
+                gutter: line_number,
+                mark: mark
+        }
+}
+
+function getCodeContent(options){
+    var gutter = options.hasOwnProperty('gutter') ? options.gutter : true;
+    var firstLine = options.hasOwnProperty('firstLine') ? +options.firstLine : 1;
+    var caption = options.caption;
+    var mark = options.hasOwnProperty('mark') ? options.mark : [];
+    var diff = options.hasOwnProperty('diff') ? options.diff : false;
+    var numbers = '';
+    var content = '';
+    var result = '';
+    var line;
+    var maxLine = 1;
+    var diffclass = '';
+    
+    for (var i = 0, len = mark.length; i < len; i++) {
+        maxLine = mark[i] > maxLine ? mark[i] : maxLine;
+    }
+
+    for (var i = 0, len = maxLine; i < len; i++) {
+        numbers += '<div class="line">' + (firstLine + i) + '</div>';
+        if ( 0 == i){
+        content = '<div class="line';
+        content += (mark.indexOf(firstLine + i) !== -1) ? ' marked' : '';
+        content += '">' + (options.lang ? 'language:' + options.lang: 'not find language !') + '</div>';
+        } else {
+        content += '<div class="line';
+        content += (mark.indexOf(firstLine + i) !== -1) ? ' marked' : '';
+        content += '">' + (i+1) + '</div>';
+        }
+    }
+
+    if (caption) {
+        result += '<figcaption>' + caption + '</figcaption>';
+    }
+
+    //新样式
+    result += '<div class="figcode">';
+
+    if (gutter) {
+        result += '<div class="gutter"><pre>' + numbers + '</pre></div>';
+    }
+
+    result += '<div class="code"><pre>' + content + '</pre></div>';
+    result += '</div></figure>';
+
+    return result;
+}
+function changeEventHandler(value){
+    var options=getRegExcData(value);
+    var codeArea = document.getElementById('codeArea');
+    codeArea.innerHTML = getCodeContent(options);
+}
+
+var myinput=document.getElementById('input');
+document.getElementById('input').parentElement.style = "display:flex";
+myinput.onchange(myinput.value);
+</script>
+</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="设置语法语言"><a href="#设置语法语言" class="headerlink" title="设置语法语言"></a>设置语法语言</h3><ul>
+<li><p>格式</p>
+<figure class="highlight c"><div class="figcode"><div class="code"><pre><div class="line">``` language             <span class="comment">//注意 语言类型 需要写在其他定义之前</span></div><div class="line">code snippet</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>样例</p>
+<figure class="highlight plain"><div class="figcode"><div class="code"><pre><div class="line">```java</div><div class="line">public Class HelloWorldClass()&#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        System.Out.printl(&quot;Hello World&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>效果</p>
+<figure class="highlight java"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Class <span class="title">HelloWorldClass</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></div></div></figure>
+</li>
+</ul>
+<h3 id="设置标题"><a href="#设置标题" class="headerlink" title="设置标题"></a>设置标题</h3><ul>
+<li><p>格式</p>
+<figure class="highlight c"><div class="figcode"><div class="code"><pre><div class="line">``` [:words|:path|:url|:ftp|:ip/path]             <span class="comment">//以英文冒号开头即可</span></div><div class="line">code snippet </div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>样例</p>
+<figure class="highlight custom"><div class="figcode"><div class="code"><pre><div class="line">``` :file:///D:/zhuzhu xia/HelloWorldClass.java   <span class="comment">//如果没有定义语言，词后缀可辅助</span></div><div class="line">public Class HelloWorldClass()&#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>效果</p>
+<figure class="highlight plain"><figcaption><span class="fileDir">file:///D:/zhuzhu xia/</span><span class="caption">HelloWorldClass</span><span class="suffix">.java</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line">public Class HelloWorldClass()&#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        System.Out.printl(&quot;Hello World&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></div></div></figure>
+</li>
+</ul>
+<h3 id="是否显示行号"><a href="#是否显示行号" class="headerlink" title="是否显示行号"></a>是否显示行号</h3><ul>
+<li><p>格式</p>
+<figure class="highlight c"><div class="figcode"><div class="code"><pre><div class="line">``` [line_number:(<span class="literal">true</span>|<span class="literal">false</span>)]             <span class="comment">//默认true</span></div><div class="line">code snippet</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>样例</p>
+<figure class="highlight custom"><div class="figcode"><div class="code"><pre><div class="line">```java line_number:false   </div><div class="line">public Class HelloWorldClass()&#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>效果</p>
+<figure class="highlight java"><div class="figcode"><div class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Class <span class="title">HelloWorldClass</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></div></div></figure>
+</li>
+</ul>
+<h3 id="设置起始行号"><a href="#设置起始行号" class="headerlink" title="设置起始行号"></a>设置起始行号</h3><ul>
+<li><p>格式</p>
+<figure class="highlight c"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">``` [first_line:number]             <span class="comment">//默认</span></div><div class="line">code snippet</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>样例</p>
+<figure class="highlight custom"><div class="figcode"><div class="code"><pre><div class="line">```java first_line:22   </div><div class="line">public Class HelloWorldClass()&#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>效果</p>
+<figure class="highlight java"><div class="figcode"><div class="gutter"><pre><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Class <span class="title">HelloWorldClass</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></div></div></figure>
+</li>
+</ul>
+<h3 id="选定行号标记"><a href="#选定行号标记" class="headerlink" title="选定行号标记"></a>选定行号标记</h3><ul>
+<li><p>格式</p>
+<figure class="highlight c"><div class="figcode"><div class="code"><pre><div class="line">``` [mark:#,#-#]             <span class="comment">//#行号，#-#行号范围</span></div><div class="line">code snippet</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>样例</p>
+<figure class="highlight custom"><div class="figcode"><div class="code"><pre><div class="line">```java mark:2,4,8,10-14,18   </div><div class="line">public Class HelloWorldClass()&#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">        System.Out.printl("Hello World");</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>效果</p>
+<figure class="highlight java"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Class <span class="title">HelloWorldClass</span><span class="params">()</span></span>&#123;</div><div class="line marked">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line marked">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line marked">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line marked">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line marked">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line marked">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line marked">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line marked">        System.Out.printl(<span class="string">"Hello World"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></div></div></figure>
+</li>
+</ul>
+<h3 id="设置代码添加删除标记"><a href="#设置代码添加删除标记" class="headerlink" title="设置代码添加删除标记"></a>设置代码添加删除标记</h3><ul>
+<li><p>格式</p>
+<figure class="highlight c"><div class="figcode"><div class="code"><pre><div class="line">``` [diff:<span class="literal">true</span>|<span class="literal">false</span>]   </div><div class="line">code snippet</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>样例</p>
+<figure class="highlight c"><div class="figcode"><div class="code"><pre><div class="line">```js diff:<span class="literal">true</span>   </div><div class="line">'use struct';</div><div class="line"></div><div class="line">-var name = 'zhu'</div><div class="line">+var name = 'zhuzhuxia';</div><div class="line"></div><div class="line"><span class="function">function <span class="title">sayHello</span><span class="params">()</span></span>&#123;</div><div class="line">-    alert(name);</div><div class="line">+    console.<span class="built_in">log</span>(name);</div><div class="line">&#125;</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>效果</p>
+<figure class="highlight js"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="string">'use struct'</span>;</div><div class="line"></div><div class="line diff-deletion"><span class="keyword">var</span> name = <span class="string">'zhu'</span></div><div class="line diff-addition"><span class="keyword">var</span> name = <span class="string">'zhuzhuxia'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</div><div class="line diff-deletion">    alert(name);</div><div class="line diff-addition">    <span class="built_in">console</span>.log(name);</div><div class="line">&#125;</div></pre></div></div></figure>
+</li>
+</ul>
+<p>还有更惊喜的功能，你点击左上角 <i class="fa fa-paste fa-fw"></i><code>复制</code> 按钮，粘贴出去试试看！只会复制出最新代码哦。</p>
+<h3 id="设置跳转超级链接"><a href="#设置跳转超级链接" class="headerlink" title="设置跳转超级链接"></a>设置跳转超级链接</h3><ul>
+<li><p>格式</p>
+<figure class="highlight c"><div class="figcode"><div class="code"><pre><div class="line">``` [url:http... download|下载]  <span class="comment">//url:http 开头，无download则跳转链接，有则下载内容</span></div><div class="line">code snippet</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>样例</p>
+<figure class="highlight custom"><div class="figcode"><div class="code"><pre><div class="line">``` :需要标题 url:http://zhuzhuyule.com/images/avatar.png download</div><div class="line">这里会下载我的头像！</div><div class="line">```</div></pre></div></div></figure>
+</li>
+<li><p>效果</p>
+<figure class="highlight plain"><figcaption><span class="caption">需要标题</span><a href="http://zhuzhuyule.com/images/avatar.png" download=""><i class="fa fa-download" aria-hidden="true"></i> download</a></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line">这里会下载我的头像！</div></pre></div></div></figure>
+</li>
+</ul>
+<h2 id="修改代码"><a href="#修改代码" class="headerlink" title="修改代码"></a>修改代码</h2><p>如果需要实现以上功能，需要更改 <code>./node_modules/</code>目录下插件：</p>
+<figure class="highlight custom"><div class="figcode"><div class="code"><pre><div class="line"> <a class="keyword" href="https://github.com/zhuzhuyule/hexo-blog-modify" target="_blank" rel="external">node_module</a> </div><div class="line">|--hexo</div><div class="line">|  |--lib</div><div class="line">|     |--plugins</div><div class="line">|        |--filter</div><div class="line">|           |--before_post_render</div><div class="line">|              |--<a class="keyword" href="https://github.com/zhuzhuyule/hexo-blog-modify/blob/master/node_modules_modify/hexo/lib/plugins/filter/before_post_render/backtick_code_block.js#L7L141" target="_blank" rel="external">backtick_code_block.js</a> </div><div class="line">|</div><div class="line">|--hexo-util</div><div class="line">|  |--lib</div><div class="line">|     |--<a class="keyword" href="https://github.com/zhuzhuyule/hexo-blog-modify/blob/master/node_modules_modify/hexo-util/lib/highlight.js" target="_blank" rel="external">highlight.js</a> </div></pre></div></div></figure>
+<p>覆盖以上文件即可，详细不在这里描述了。</p>
+<p>在添加样式文件即可：<br><figure class="highlight custom"><div class="figcode"><div class="code"><pre><div class="line"> <a class="keyword" href="https://github.com/zhuzhuyule/hexo-blog-modify" target="_blank" rel="external">themes</a> </div><div class="line">|--next</div><div class="line">|  |--source</div><div class="line">|     |--css</div><div class="line">|        |--_custom</div><div class="line">|           |--<a class="keyword" href="https://github.com/zhuzhuyule/hexo-blog-modify/blob/master/themes/next/source/css/_custom/highlight.styl" target="_blank" rel="external">highlight.styl</a> </div><div class="line">|           |--<a class="keyword" href="https://github.com/zhuzhuyule/hexo-blog-modify/blob/master/themes/next/source/css/_custom/custom.styl" target="_blank" rel="external">custom.styl</a>      <span class="comment">//感谢 <a class="keyword" href="https://github.com/maoshengyang" target="_blank" rel="external">@maoshengyang</a> 提醒，还需要添加文件引用：<code class="keyword">@import highlight</code>;</span>    <span></span> </div></pre></div></div></figure></p>
+<p><code>custom.styl</code>中添加样式文件引用：<br><figure class="highlight css"><figcaption><span class="caption">custom</span><span class="suffix">.styl</span></figcaption><div class="figcode"><div class="code"><pre><div class="line">@<span class="keyword">import</span> highlight;</div></pre></div></div></figure></p>
+<p><code>theme.styl</code>中直接添加颜色，可以自己调整颜色（放在这里好控制管理皮肤）：<br><figure class="highlight styl"><figcaption><span class="fileDir">.\themes\next\source\css\_common\components\highlight\</span><span class="caption">theme</span><span class="suffix">.styl</span></figcaption><div class="figcode"><div class="code"><pre><div class="line"><span class="variable">$highlight</span>-diffdeletion = <span class="number">#c7ffd7</span></div><div class="line"><span class="variable">$highlight</span>-diffaddition = <span class="number">#ffd3d8</span></div></pre></div></div></figure></p>
+<p>也可以这样，这是我的 自己使用的皮肤配色：<br><figure class="highlight styl"><figcaption><span class="fileDir">.\themes\next\source\css\_common\components\highlight\</span><span class="caption">theme</span><span class="suffix">.styl</span></figcaption><div class="figcode"><div class="code"><pre><div class="line"><span class="keyword">if</span> <span class="variable">$highlight_theme</span> == <span class="string">"custom light"</span></div><div class="line">  <span class="variable">$highlight</span>-figcaptionBK   = <span class="number">#eee</span></div><div class="line">  <span class="variable">$highlight</span>-figcaptionFont = <span class="number">#777</span></div><div class="line">  <span class="variable">$highlight</span>-<span class="attribute">background</span>   = <span class="number">#f8f8f8</span></div><div class="line">  <span class="variable">$highlight</span>-emphasisBK   = <span class="number">#ffffff</span></div><div class="line">  <span class="variable">$highlight</span>-emphasisFont = <span class="number">#111</span></div><div class="line">  <span class="variable">$highlight</span>-current-line = <span class="number">#efefef</span></div><div class="line">  <span class="variable">$highlight</span>-selection    = <span class="number">#d6d6d6</span></div><div class="line">  <span class="variable">$highlight</span>-foreground   = <span class="number">#4d4d4c</span></div><div class="line">  <span class="variable">$highlight</span>-comment      = <span class="number">#6eb55e</span></div><div class="line">  <span class="variable">$highlight</span>-red          = <span class="number">#c82829</span></div><div class="line">  <span class="variable">$highlight</span>-orange       = <span class="number">#f5871f</span></div><div class="line">  <span class="variable">$highlight</span>-yellow       = <span class="number">#eab700</span></div><div class="line">  <span class="variable">$highlight</span>-green        = <span class="number">#718c00</span></div><div class="line">  <span class="variable">$highlight</span>-aqua         = <span class="number">#3e999f</span></div><div class="line">  <span class="variable">$highlight</span>-blue         = <span class="number">#4271ae</span></div><div class="line">  <span class="variable">$highlight</span>-purple       = <span class="number">#1212a0</span></div><div class="line">  <span class="variable">$highlight</span>-diffdeletion = <span class="number">#c7ffd7</span></div><div class="line">  <span class="variable">$highlight</span>-diffaddition = <span class="number">#ffd3d8</span></div><div class="line">  <span class="variable">$highlight</span>-gutter       = &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#5c5c5c</span>,</div><div class="line">    bg-<span class="attribute">color</span>: <span class="number">#e7e5dc</span>,</div><div class="line">    <span class="attribute">right</span>-border-color: <span class="number">#aed581</span></div><div class="line">  &#125;</div></pre></div></div></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    zhuzhuxia
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://zhuzhuyule.com/blog/HEXO/HEXO下的语法高亮拓展修改.html" title="HEXO下的语法高亮拓展修改">https://zhuzhuyule.com/blog/HEXO/HEXO下的语法高亮拓展修改.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>温馨提示： </strong>
+    <span class="tip">由于原创文章，会经常更新知识点以及修正一些错误，因此转载请保留原出处， 方便溯源，避免陈旧错误知识的误导，同时有更好的阅读体验。</span>
+  </li>
+</ul>
+
+      </div>
+    
+
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得我的文章对您有用，请随意打赏。您的支持将是我继续创作的动力！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechat-reward.png" alt="zhuzhuxia 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay-reward.png" alt="zhuzhuxia 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo优化系列/" rel="tag"># Hexo优化系列</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/Skill/Delphi下获取网络数据乱码问题.html" rel="next" title="Delphi下获取网络数据乱码问题">
+                <i class="fa fa-chevron-left"></i> Delphi下获取网络数据乱码问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/Front/纯CSS实现轮播图.html" rel="prev" title="纯CSS实现轮播图">
+                纯CSS实现轮播图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+    
+    
+      <div id="cyQing" role="cylabs" data-use="qing"></div>
+      <!-- <div id="cyEmoji" role="cylabs" data-use="emoji"></div> -->
+    
+  
+
+
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+            <canvas id='sidebar-author'></canvas>
+            <a href="/"  class="site-author-image" rel="start" style="border: none;" title="zhuzhuxia">
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="zhuzhuxia" />
+	    </a>
+            
+              <p class="site-author-name" itemprop="name">zhuzhuxia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zhuzhuyule" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/zhuzhuyule" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/zhuzhuyule" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          <div id="sidebarClock" class="customFlipClock" style="height: 46px;width: 100%; ">TwentyFourHourClock</div>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#格式总览"><span class="nav-number">1.</span> <span class="nav-text">格式总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">2.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置语法语言"><span class="nav-number">2.1.</span> <span class="nav-text">设置语法语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置标题"><span class="nav-number">2.2.</span> <span class="nav-text">设置标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#是否显示行号"><span class="nav-number">2.3.</span> <span class="nav-text">是否显示行号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置起始行号"><span class="nav-number">2.4.</span> <span class="nav-text">设置起始行号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选定行号标记"><span class="nav-number">2.5.</span> <span class="nav-text">选定行号标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置代码添加删除标记"><span class="nav-number">2.6.</span> <span class="nav-text">设置代码添加删除标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置跳转超级链接"><span class="nav-number">2.7.</span> <span class="nav-text">设置跳转超级链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改代码"><span class="nav-number">3.</span> <span class="nav-text">修改代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhuzhuxia</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user" aria-hidden="true"></i> 您是第
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      位访客
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye" aria-hidden="true"></i> 访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/function.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>	
+<script type="text/javascript" src="/lib/flipclock/flipclock.min.js"></script>	
+<script type="text/javascript" src="/js/src/customeFlipClock.js"></script>	
+<script type="text/javascript" src="/js/src/codescrollbar.js"></script>	
+<script type="text/javascript" src="/lib/tag3dCloud/tag3dCloud.min.js"> </script>
+<script type="text/javascript" src="/lib/wobblewindow/wobblewindow.js"> </script>
+<script type="text/javascript" src="/js/src/custom.js"></script>	
+<script >
+	$(document).ready(
+	function()
+		{			
+			
+		}
+	);	
+</script>
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cysUtw2bK';
+      var conf = '963ddc22890a37056f86ae4def092f78';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          //$('.popup').detach().appendTo('.header-inner');
+          $('.popup').detach().appendTo('body');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6gkeWX7uyM69Suac2kuNsxLI-gzGzoHsz", "DGI3SXz1bKTgG1plxQKqmKOa");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
